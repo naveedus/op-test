@@ -364,6 +364,15 @@ class BasicIPLSuite():
     def suite(self):
         return BasicIPL.suite()
 
+class KernelArgsSuite():
+    '''Passing the Kernel comdline argument'''
+    def __init__(self):
+        self.s = unittest.TestSuite()
+        self.s.addTest(OpTestKernelArg.OpTestKernelArg())
+        self.s.addTest(RunHostTest.RunHostTest())
+
+    def suite(self):
+        return self.s
 
 class SBSuite():
     '''Secure boot tests'''
@@ -1029,6 +1038,7 @@ suites = {
     'per-commit': OpTestPerCommitSuite(),
     'pull-request': OpTestPullRequestSuite(),
     'kexec-suite': KexecSuite(),
+    'KernelArgsSuite': KernelArgsSuite(),
 }
 
 try:
